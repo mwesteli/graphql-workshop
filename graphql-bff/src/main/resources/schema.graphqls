@@ -1,1 +1,40 @@
-# Create scheme here
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    getEmployees: [Employee]
+    getEmployee(id: Int): Employee
+    getCars: [Car]
+    getCar(id: Int): Car
+}
+
+type Mutation {
+    addEmployee(firstName: String!, lastName: String!, email: String!, mobile: String!, carLicensePlate: String, contractType: ContractType!): Employee
+}
+
+type Employee {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    email: String!
+    mobile: String!
+    carLicencePlate: String
+    contractType: ContractType!
+    car: Car
+}
+
+enum ContractType {
+    PERMANENT
+    FIXED_TERM
+}
+
+type Car {
+    id: Int!
+    make: String!
+    model: String!
+    color: String!
+    bodyType: String!
+    licensePlate: String!
+}
